@@ -69,16 +69,22 @@ public:
     // TODO: Find parent, create child, link parent to child
     // TODO: Support repeated children under multiple parents
     {
+        // first check if the new node exists already to avoid creating duplicates
+        Node<T>* child = findNode(childID);
 
+        if (child == nullptr) {
+            child = new Node<T>(parentID, value);
+        }
 
-        findNode(parentID);
-
+        Node<T> parent = findNode(parentID);
+        parent.children.push_back(child);
 
     }
 
     Node<T>* findNode(const string &id)
     // TODO: Use DFS or BFS to search tree
     {
+
 
     }
 
